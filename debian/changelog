@@ -1,4 +1,4 @@
-gnome-shell (3.2.1-5) UNRELEASED; urgency=low
+gnome-shell (3.2.1-6) experimental; urgency=low
 
   [ Raphaël Hertzog ]
   * Add Breaks against gnome-tweak-tool (<< 3.2) to force its upgrade to a
@@ -8,7 +8,14 @@ gnome-shell (3.2.1-5) UNRELEASED; urgency=low
   * Split common files and translations in gnome-shell-common. Add 
     appropriate Breaks/Replaces.
 
- -- Raphaël Hertzog <hertzog@debian.org>  Tue, 29 Nov 2011 11:32:54 +0100
+  [ Michael Biebl ]
+  * debian/watch:
+    - Track stable releases.
+  * debian/patches/09-respect-NoDisplay-semantics-for-app-menu.patch:
+    - Respect NoDisplay semantics for applications menu. This avoids duplicate
+      menu entries when menu-xdg is installed. Closes: #649559
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 03 Dec 2011 17:23:39 +0100
 
 gnome-shell (3.2.1-5) experimental; urgency=low
 
