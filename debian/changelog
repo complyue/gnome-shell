@@ -1,22 +1,42 @@
-gnome-shell (3.24.2-1) UNRELEASED; urgency=medium
-
-  * Work in progress: needs a newer gjs, which in turn needs mozjs38
+gnome-shell (3.25.91-1) experimental; urgency=medium
 
   [ Jeremy Bicha ]
+  * New upstream release
+  * Build with meson
   * debian/control.in:
     - Drop obsolete Build-Depends against telepathy-glib
-    - Bump minimum mutter to 3.24.0, gjs to 1.47.90
+    - Build-Depend on libasound2-dev
+    - Bump minimum mutter to 3.25.91, gjs to 1.47.90,
+      glib to 2.53.0
     - Depend on gir1.2-geoclue-2.0 and gir1.2-rsvg-2.0
     - Depend on caribou (LP: #1589240)
     - Recommend chrome-gnome-shell
     - Recommend switcheroo-control for dual GPU support
+  * debian/rules:
+    - Drop disable-new-dtags flag, no longer needed
+    - Drop dh_girepository override, doesn't work with meson
+      and apparently not needed
+  * debian/gnome-shell-common.install:
+    - Don't try to install gtk-doc documentation
+  * Drop icon theme dependency hack no longer used by Ubuntu 
+  * Add run-unit-tests.patch: Run unit tests with meson
   * Drop 3.14 upgrade hack, not needed after stretch
+  * Drop 50-extension-reload-fail.patch: applied in new release
+  * Bump Standards-Version to 4.1.0
 
   [ Simon McVittie]
   * Drop Telepathy g-i bindings from Depends to Suggests now that they
     are runtime-optional upstream
 
- -- Simon McVittie <smcv@debian.org>  Tue, 04 Apr 2017 09:24:23 +0100
+ -- Simon McVittie <smcv@debian.org>  Thu, 31 Aug 2017 12:24:23 +0100
+
+gnome-shell (3.22.3-3) unstable; urgency=medium
+
+  * debian/patches/50-extension-reload-fail.patch:
+    - Add patch to fix a bug where extensions could be left enabled in the
+      lock screen.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 26 Apr 2017 18:47:56 +0200
 
 gnome-shell (3.22.3-2) unstable; urgency=medium
 
