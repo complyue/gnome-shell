@@ -1,3 +1,19 @@
+gnome-shell (3.26.1-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream release
+    - d/p/000[1-5]*.patch: Drop patches that came from upstream
+    - d/p/0006-gtk-embed-stop-watching-for-new-windows-when-icon-is.patch:
+      Drop patch for #875609, fixed differently upstream
+    - debian/patches/41-handle-logind-fail.patch:
+      Drop patch for #729877, fixed differently upstream
+    - d/p/run-unit-tests.patch: Drop patch, applied upstream
+  * d/p/30-remoteMenu-Prevent-the-shell-from-becoming-unrespons.patch:
+    Drop patch for GNOME #686502, fixed differently upstream
+    (and was no longer applied anyway)
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 06 Oct 2017 10:35:46 +0100
+
 gnome-shell (3.26.0-2) experimental; urgency=medium
 
   * Team upload
