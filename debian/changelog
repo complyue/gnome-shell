@@ -1,7 +1,7 @@
-gnome-shell (3.28.2-0ubuntu1) UNRELEASED; urgency=medium
+gnome-shell (3.28.2-0ubuntu0.18.04.1) UNRELEASED; urgency=medium
 
   [ Olivier Tilloy ]
-  * New upstream release
+  * New upstream release (LP: #1775145)
     - fixes valid password rejection at login screen (LP: #1765261)
   * Drop patches applied upstream:
     - debian/patches/polkitAgent-Guard-against-repeated-close-calls.patch
