@@ -1,5 +1,6 @@
 gnome-shell (3.28.3-0ubuntu1) UNRELEASED; urgency=medium
 
+  * New upstream release (LP: #1718931, LP: #1782614)
   * debian/patches/30-remoteMenu-Prevent-the-shell-from-becoming-unrespons.patch,
     debian/patches/magnifier.js-Fix-zoom-juddering.patch,
     debian/patches/st-label-Unset-clutter-text-instance-on-disposal.patch,
