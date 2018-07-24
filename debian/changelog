@@ -9,7 +9,7 @@ gnome-shell (3.28.3-0ubuntu0.18.04.1) bionic; urgency=medium
     debian/patches/ui-Theme-lookup-should-respect-XDG_DATA_DIRS.patch:
     - Drop patches applied on the 3.28 branch
   * debian/patches/js-fix-invalid-access-errors.patch:
-    - Refreshed to reflect upstream changes
+    - Updated to include upstream requested changes
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 24 Jul 2018 12:46:27 +0100
 
