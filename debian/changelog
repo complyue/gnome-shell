@@ -10,6 +10,8 @@ gnome-shell (3.28.3-0ubuntu0.18.04.1) bionic; urgency=medium
     - Drop patches applied on the 3.28 branch
   * debian/patches/js-fix-invalid-access-errors.patch:
     - Updated to include upstream requested changes
+  * debian/patches/workspace-fix-repositioned-windows-in-activities.patch:
+    - Cherry-pick from upstream 3.28 branch
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 24 Jul 2018 12:46:27 +0100
 
