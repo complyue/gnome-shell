@@ -21,3 +21,4 @@ js-ui-Choose-some-actors-to-cache-on-the-GPU.patch
 authPrompt-Unset-preemptiveAnswer-on-reset.patch
 authPrompt-Do-not-enable-sensitivity-if-retries-are-disal.patch
 gdm-util-Always-allow-to-retry-login-in-unlock-mode.patch
+popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch

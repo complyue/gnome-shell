@@ -36,10 +36,10 @@ Forwarded: yes
  3 files changed, 12 insertions(+), 7 deletions(-)
 
 diff --git a/js/ui/keyboard.js b/js/ui/keyboard.js
-index e13c7b7..14f6e7b 100644
+index 5fcdf98..dd47676 100644
 --- a/js/ui/keyboard.js
 +++ b/js/ui/keyboard.js
-@@ -939,6 +939,12 @@ var Keyboard = new Lang.Class({
+@@ -919,6 +919,12 @@ var Keyboard = new Lang.Class({
          if (this.actor == null)
              return;
          let monitor = Main.layoutManager.keyboardMonitor;
@@ -52,7 +52,7 @@ index e13c7b7..14f6e7b 100644
          let maxHeight = monitor.height / 3;
          this.actor.width = monitor.width;
          this.actor.height = maxHeight;
-@@ -1001,6 +1007,8 @@ var Keyboard = new Lang.Class({
+@@ -981,6 +987,8 @@ var Keyboard = new Lang.Class({
          if (!this._enabled)
              return;
  

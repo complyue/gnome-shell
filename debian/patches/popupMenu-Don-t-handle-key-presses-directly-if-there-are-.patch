@@ -1,0 +1,44 @@
+From: Andrea Azzarone <andrea.azzarone@canonical.com>
+Date: Thu, 21 Jun 2018 16:40:43 +0000
+Subject: popupMenu: Don't handle key presses directly if there are modifiers
+
+Key events involved in a keyboard shortcut are not completely consumed by
+Mutter. That means that if the popupMenu is bound to a shortcut (e.g.
+Alt<Space>) and the user keeps the keys pressed, the same key-event will be
+delivered to the popupMenu. We can workaround this issue filtering out all the
+events where a a modifier is down (except capslock).
+
+Fixes: https://gitlab.gnome.org/GNOME/gnome-shell/issues/372
+
+(cherry picked from commit 2e90c5fa4b35ebe26c694223966834ee949cfce3)
+
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gnome-shell/+bug/1784671
+Bug-GNOME: https://gitlab.gnome.org/GNOME/gnome-shell/issues/372
+Applied-Upstream: 3.28.4, commit:https://gitlab.gnome.org/GNOME/gnome-shell/commit/445eed40
+---
+ js/ui/popupMenu.js | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/js/ui/popupMenu.js b/js/ui/popupMenu.js
+index 83194d7..f449d6e 100644
+--- a/js/ui/popupMenu.js
++++ b/js/ui/popupMenu.js
+@@ -141,8 +141,17 @@ var PopupBaseMenuItem = new Lang.Class({
+     },
+ 
+     _onKeyPressEvent(actor, event) {
+-        let symbol = event.get_key_symbol();
++        let state = event.get_state();
+ 
++        // if user has a modifier down (except capslock)
++        // then don't handle the key press here
++        state &= ~Clutter.ModifierType.LOCK_MASK;
++        state &= Clutter.ModifierType.MODIFIER_MASK;
++
++        if (state)
++            return Clutter.EVENT_PROPAGATE;
++
++        let symbol = event.get_key_symbol();
+         if (symbol == Clutter.KEY_space || symbol == Clutter.KEY_Return) {
+             this.activate(event);
+             return Clutter.EVENT_STOP;

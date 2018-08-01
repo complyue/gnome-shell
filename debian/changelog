@@ -1,3 +1,10 @@
+gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
+
+  * d/p/popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch
+    -  Don't handle key presses directly if there are modifiers (LP: #1784671)
+
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 01 Aug 2018 16:52:22 +0200
+
 gnome-shell (3.28.3-0ubuntu0.18.04.2) bionic; urgency=medium
 
   * debian/patches/js-fix-invalid-access-errors.patch:
