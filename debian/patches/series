@@ -26,4 +26,6 @@ viewSelector-Cancel-search-on-overview-hidden.patch
 search-Cancel-search-provider-operations-on-clear.patch
 search-Ignore-search-provider-results-metas-if-search-is-.patch
 st-button-Ignore-pointer-emulated-touch-events.patch
+st-scroll-view-Handle-the-case-where-scrollbars-are-NULL.patch
+st-scroll-view-Remove-scrollbars-references-on-dispose.patch
 ubuntu/search-call-XUbuntuCancel-method-on-providers-when-no-dat.patch

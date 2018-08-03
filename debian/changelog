@@ -11,6 +11,9 @@ gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
     - set StEntry minimun height to work properly with Ubuntu font (LP: #1743058)
   * debian/patches/st-button-Ignore-pointer-emulated-touch-events.patch:
     - Don't emit two click events on touch under X11 (LP: #1745888)
+  * d/p/st-scroll-view-Handle-the-case-where-scrollbars-are-NULL.patch,
+    d/p/st-scroll-view-Remove-scrollbars-references-on-dispose.patch:
+    - Handle NULL scroll bars in st-scroll-view (LP: #1725312)
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 03 Oct 2018 00:50:42 +0200
 
