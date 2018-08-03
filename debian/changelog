@@ -1,20 +1,4 @@
-gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
-
-  * d/p/popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch
-    -  Don't handle key presses directly if there are modifiers (LP: #1784671)
-
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 01 Aug 2018 16:52:22 +0200
-
-gnome-shell (3.28.3-0ubuntu0.18.04.2) bionic; urgency=medium
-
-  * debian/patches/js-fix-invalid-access-errors.patch:
-    - Updated to include upstream requested changes (LP: #1783363)
-  * debian/patches/workspace-fix-repositioned-windows-in-activities.patch:
-    - Cherry-pick from upstream 3.28 branch
-
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 25 Jul 2018 09:18:50 +0100
-
-gnome-shell (3.28.3-0ubuntu0.18.04.1) bionic; urgency=medium
+gnome-shell (3.28.3-0ubuntu0.18.04.2) UNRELEASED; urgency=medium
 
   * New upstream release (LP: #1718931, LP: #1782614)
   * debian/patches/30-remoteMenu-Prevent-the-shell-from-becoming-unrespons.patch,
@@ -26,6 +10,10 @@ gnome-shell (3.28.3-0ubuntu0.18.04.1) bionic; urgency=medium
     - Drop patches applied on the 3.28 branch
   * debian/patches/js-fix-invalid-access-errors.patch:
     - Refreshed to reflect upstream changes
+  * d/p/popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch
+    -  Don't handle key presses directly if there are modifiers (LP: #1784671)
+  * debian/patches/workspace-fix-repositioned-windows-in-activities.patch:
+    - Cherry-pick from upstream 3.28 branch
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 24 Jul 2018 12:46:27 +0100
 
