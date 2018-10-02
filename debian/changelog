@@ -8,8 +8,9 @@ gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
       is closed (and actually stop searches when requested from UI, LP: #1756826)
   * debian/ubuntu.css:
     - use defined color for menu separators (LP: #1739931)
+    - set StEntry minimun height to work properly with Ubuntu font (LP: #1743058)
 
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 05 Sep 2018 14:31:58 +0200
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 03 Oct 2018 00:50:42 +0200
 
 gnome-shell (3.28.3-0ubuntu0.18.04.2) bionic; urgency=medium
 

@@ -1911,6 +1911,11 @@ stage {
   font-family: Ubuntu, Cantarell, Sans-Serif;
 }
 
+/* Set minimum height as per Ubuntu font usage, fixes password entries (LP: #1743058) */
+StEntry {
+  min-height: 19px;
+}
+
 /* switch colors */
 .toggle-switch-us:checked {
   background-image: url("ubuntu-toggle-on-us.svg");
