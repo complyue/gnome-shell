@@ -6,6 +6,8 @@ gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
     d/p/ubuntu/search-call-XUbuntuCancel-method-on-providers-when-no-dat.patch:
     - Add support for cancelling remote search providers when the overlay
       is closed (and actually stop searches when requested from UI, LP: #1756826)
+  * debian/ubuntu.css:
+    - use defined color for menu separators (LP: #1739931)
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 05 Sep 2018 14:31:58 +0200
 
