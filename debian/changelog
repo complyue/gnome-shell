@@ -1,4 +1,4 @@
-gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
+gnome-shell (3.28.3-0ubuntu0.18.04.3) bionic; urgency=medium
 
   * debian/ubuntu.css:
     - use defined color for menu separators (LP: #1739931)
@@ -9,7 +9,7 @@ gnome-shell (3.28.3-0ubuntu0.18.04.3) UNRELEASED; urgency=medium
     d/p/st-scroll-view-Remove-scrollbars-references-on-dispose.patch:
     - Handle NULL scroll bars in st-scroll-view (LP: #1725312)
 
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Wed, 03 Oct 2018 00:50:42 +0200
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 06 Nov 2018 17:49:17 +0000
 
 gnome-shell (3.28.3-0ubuntu0.18.04.2) bionic; urgency=medium
 
