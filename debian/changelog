@@ -1,3 +1,11 @@
+gnome-shell (3.28.3-0ubuntu0.18.04.4) UNRELEASED; urgency=medium
+
+  * debian/patches/ibus-set-content-type-no-holdKeyboard.patch:
+    - Cherry-pick upstream commit to prevent focus stealing on password fields
+      in firefox when ibus is used (LP: #1765304)
+
+ -- Olivier Tilloy <olivier.tilloy@canonical.com>  Thu, 29 Nov 2018 11:34:00 +0100
+
 gnome-shell (3.28.3-0ubuntu0.18.04.3) bionic; urgency=medium
 
   * debian/ubuntu.css:

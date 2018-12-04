@@ -25,3 +25,4 @@ popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch
 st-button-Ignore-pointer-emulated-touch-events.patch
 st-scroll-view-Handle-the-case-where-scrollbars-are-NULL.patch
 st-scroll-view-Remove-scrollbars-references-on-dispose.patch
+ibus-set-content-type-no-holdKeyboard.patch
