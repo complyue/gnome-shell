@@ -1,5 +1,5 @@
 From: =?utf-8?b?Ik1hcmNvIFRyZXZpc2FuIChUcmV2acOxbyki?= <mail@3v1n0.net>
-Date: Wed, 18 Oct 2017 05:32:22 -0500
+Date: Wed, 18 Oct 2017 12:32:22 +0200
 Subject: StIcon: only compute shadow pipeline when the texture is properly
  allocated
 

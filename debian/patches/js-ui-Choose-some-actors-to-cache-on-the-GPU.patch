@@ -1,5 +1,5 @@
 From: Daniel van Vugt <daniel.van.vugt@canonical.com>
-Date: Fri, 6 Apr 2018 05:26:58 -0500
+Date: Fri, 6 Apr 2018 12:26:58 +0200
 Subject: js/ui: Choose some actors to cache on the GPU
 
 Adds a wrapper function to flag actors that are good candidates for
@@ -64,10 +64,10 @@ index 47f718a..602646a 100644
          this._container.connect('get-preferred-height', this._getPreferredHeight.bind(this));
          this._container.connect('allocate', this._allocate.bind(this));
 diff --git a/js/ui/dash.js b/js/ui/dash.js
-index 5ee2476..14864f1 100644
+index d75af65..4d3fe73 100644
 --- a/js/ui/dash.js
 +++ b/js/ui/dash.js
-@@ -402,6 +402,7 @@ var Dash = new Lang.Class({
+@@ -404,6 +404,7 @@ var Dash = new Lang.Class({
                                         clip_to_allocation: true });
          this._box._delegate = this;
          this._container.add_actor(this._box);
@@ -96,10 +96,10 @@ index cfa192d..89db963 100644
          this.contentLayout = new St.BoxLayout({ vertical: true,
                                                  style_class: "modal-dialog-content-box" });
 diff --git a/js/ui/main.js b/js/ui/main.js
-index d86cf9e..5277cf7 100644
+index 2c54bb6..baca1c2 100644
 --- a/js/ui/main.js
 +++ b/js/ui/main.js
-@@ -716,3 +716,19 @@ function showRestartMessage(message) {
+@@ -719,3 +719,19 @@ function showRestartMessage(message) {
      let restartMessage = new RestartMessage(message);
      restartMessage.open();
  }
@@ -120,7 +120,7 @@ index d86cf9e..5277cf7 100644
 +    actor.set_offscreen_redirect(Clutter.OffscreenRedirect.ALWAYS);
 +}
 diff --git a/js/ui/panel.js b/js/ui/panel.js
-index 2f59324..2237ead 100644
+index ef14ddf..a76916b 100644
 --- a/js/ui/panel.js
 +++ b/js/ui/panel.js
 @@ -772,6 +772,7 @@ var Panel = new Lang.Class({

@@ -1,3 +1,27 @@
+gnome-shell (3.28.3+git20190124-0ubuntu18.04.1) UNRELEASED; urgency=medium
+
+  * New git snapshot release up to commit 24cdcc56d (LP: #1811900)
+    - Don't fill journal with osdWindow errors (LP: #1772677)
+    - Fix missing icon in keyboard indicator (LP: #1812266)
+  * d/p/authPrompt-Do-not-enable-sensitivity-if-retries-are-disal.patch,
+    d/p/authPrompt-Unset-preemptiveAnswer-on-reset.patch,
+    d/p/gdm-util-Always-allow-to-retry-login-in-unlock-mode.patch,
+    d/p/ibus-set-content-type-no-holdKeyboard.patch,
+    d/p/popupMenu-Don-t-handle-key-presses-directly-if-there-are-.patch,
+    d/p/st-button-Ignore-pointer-emulated-touch-events.patch,
+    d/p/shell-ignore-invalid-window-monitor-index.patch,
+    d/p/workspace-fix-repositioned-windows-in-activities.patch:
+    - Removed patches applied upstream
+  * d/p/StIcon-only-compute-shadow-pipeline-when-the-texture-is-p.patch,
+    d/p/js-fix-invalid-access-errors.patch,
+    d/p/js-ui-Choose-some-actors-to-cache-on-the-GPU.patch,
+    d/p/optional-hot-corner.patch,
+    d/p/st-texture-cache-Cancel-sliced-image-loading-on-target-ac.patch,
+    d/p/workaround_crasher_fractional_scaling.patch:
+    - Refreshed as per upstream changes
+
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 22 Jan 2019 01:53:57 +0100
+
 gnome-shell (3.28.3-0ubuntu0.18.04.4) bionic; urgency=medium
 
   * debian/patches/ibus-set-content-type-no-holdKeyboard.patch:

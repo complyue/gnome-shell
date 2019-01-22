@@ -1,5 +1,5 @@
 From: =?utf-8?b?Ik1hcmNvIFRyZXZpc2FuIChUcmV2acOxbyki?= <mail@3v1n0.net>
-Date: Wed, 29 Nov 2017 19:48:02 -0600
+Date: Thu, 30 Nov 2017 02:48:02 +0100
 Subject: st-texture-cache: Cancel sliced image loading on target actor
  destroy
 
@@ -19,7 +19,7 @@ Forwarded: yes, https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/5
  1 file changed, 26 insertions(+), 4 deletions(-)
 
 diff --git a/src/st/st-texture-cache.c b/src/st/st-texture-cache.c
-index 0c794a3..c39464e 100644
+index 6219071..fc81189 100644
 --- a/src/st/st-texture-cache.c
 +++ b/src/st/st-texture-cache.c
 @@ -1027,6 +1027,7 @@ typedef struct {

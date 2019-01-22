@@ -12,10 +12,10 @@ Bug: https://bugzilla.gnome.org/show_bug.cgi?id=788316
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/src/st/st-theme-node-drawing.c b/src/st/st-theme-node-drawing.c
-index 8942966..e57ca65 100644
+index 0637d97..7342c6c 100644
 --- a/src/st/st-theme-node-drawing.c
 +++ b/src/st/st-theme-node-drawing.c
-@@ -2505,7 +2505,7 @@ st_theme_node_paint (StThemeNode           *node,
+@@ -2531,7 +2531,7 @@ st_theme_node_paint (StThemeNode           *node,
    allocation.x2 = width;
    allocation.y2 = height;
  
