@@ -22,6 +22,8 @@ gnome-shell (3.28.3+git20190124-0ubuntu18.04.1) UNRELEASED; urgency=medium
   * d/p/keyboard-Filter-redundant-FocusTracker-position-changed-s.patch,
     d/p/keyboard-Listen-to-IbusPanelService-focus-in-out-to-track.patch:
     - Fix OSK activation on X11 (LP: #1760399)
+  * d/p/power-Label-the-PENDING_CHARGE-state-as-Not-Charging.patch:
+    - Label the PENDING_CHARGE state as "Not Charging" (LP: #1745032)
 
  -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 22 Jan 2019 01:53:57 +0100
 
