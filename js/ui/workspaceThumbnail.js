@@ -68,7 +68,7 @@ var WindowClone = new Lang.Class({
         this.realWindow = realWindow;
         this.metaWindow = realWindow.meta_window;
 
-        this.clone._updateId = this.metaWindow.connect('position-changed',
+        this.clone._updateId = this.realWindow.connect('notify::position',
                                                        this._onPositionChanged.bind(this));
         this.clone._destroyId = this.realWindow.connect('destroy', () => {
             // First destroy the clone and then destroy everything
@@ -153,7 +153,7 @@ var WindowClone = new Lang.Class({
         let clone = new Clutter.Clone({ source: realDialog });
         this._updateDialogPosition(realDialog, clone);
 
-        clone._updateId = metaDialog.connect('position-changed', dialog => {
+        clone._updateId = realDialog.connect('notify::position', dialog => {
             this._updateDialogPosition(dialog, clone);
         });
         clone._destroyId = realDialog.connect('destroy', () => {
@@ -171,7 +171,6 @@ var WindowClone = new Lang.Class({
     },
 
     _onPositionChanged() {
-        let rect = this.metaWindow.get_frame_rect();
         this.actor.set_position(this.realWindow.x, this.realWindow.y);
     },
 
@@ -179,7 +178,7 @@ var WindowClone = new Lang.Class({
         this.actor.get_children().forEach(child => {
             let realWindow = child.source;
 
-            realWindow.meta_window.disconnect(child._updateId);
+            realWindow.disconnect(child._updateId);
             realWindow.disconnect(child._destroyId);
         });
     },
@@ -417,7 +416,7 @@ var WorkspaceThumbnail = new Lang.Class({
         } else if (metaWin.is_attached_dialog()) {
             let parent = metaWin.get_transient_for();
             while (parent.is_attached_dialog())
-                parent = metaWin.get_transient_for();
+                parent = parent.get_transient_for();
 
             let idx = this._lookupIndex (parent);
             if (idx < 0) {
@@ -677,7 +676,11 @@ var ThumbnailsBox = new Lang.Class({
         this._settings.connect('changed::dynamic-workspaces',
             this._updateSwitcherVisibility.bind(this));
 
-        Main.layoutManager.connect('monitors-changed', this._rebuildThumbnails.bind(this));
+        Main.layoutManager.connect('monitors-changed', () => {
+            this._destroyThumbnails();
+            if (Main.overview.visible)
+                this._createThumbnails();
+        });
     },
 
     _updateSwitcherVisibility() {
@@ -870,9 +873,6 @@ var ThumbnailsBox = new Lang.Class({
             Main.overview.connect('windows-restacked',
                                   this._syncStacking.bind(this));
 
-        this._workareasChangedId =
-            global.screen.connect('workareas-changed', this._rebuildThumbnails.bind(this));
-
         this._targetScale = 0;
         this._scale = 0;
         this._pendingScaleUpdate = false;
@@ -902,22 +902,10 @@ var ThumbnailsBox = new Lang.Class({
             this._syncStackingId = 0;
         }
 
-        if (this._workareasChangedId > 0) {
-            global.screen.disconnect(this._workareasChangedId);
-            this._workareasChangedId = 0;
-        }
-
         for (let w = 0; w < this._thumbnails.length; w++)
             this._thumbnails[w].destroy();
         this._thumbnails = [];
         this._porthole = null;
-    },
-
-    _rebuildThumbnails() {
-        this._destroyThumbnails();
-
-        if (Main.overview.visible)
-            this._createThumbnails();
     },
 
     _workspacesChanged() {

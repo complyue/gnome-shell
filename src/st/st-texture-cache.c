@@ -780,13 +780,13 @@ st_texture_cache_load (StTextureCache       *cache,
   if (!texture)
     {
       texture = load (cache, key, data, error);
-      if (texture)
+      if (texture && policy == ST_TEXTURE_CACHE_POLICY_FOREVER)
         g_hash_table_insert (cache->priv->keyed_cache, g_strdup (key), texture);
-      else
-        return NULL;
     }
 
-  cogl_object_ref (texture);
+  if (texture && policy == ST_TEXTURE_CACHE_POLICY_FOREVER)
+    cogl_object_ref (texture);
+
   return texture;
 }
 
@@ -984,7 +984,7 @@ file_changed_cb (GFileMonitor      *monitor,
   char *key;
   guint file_hash;
 
-  if (event_type != G_FILE_MONITOR_EVENT_CHANGED)
+  if (event_type != G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
     return;
 
   file_hash = g_file_hash (file);

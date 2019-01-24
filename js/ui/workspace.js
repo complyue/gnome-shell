@@ -137,8 +137,10 @@ var WindowClone = new Lang.Class({
         this._dragSlot = [0, 0, 0, 0];
         this._stackAbove = null;
 
-        this._windowClone._updateId = this.metaWindow.connect('size-changed',
-            this._onRealWindowSizeChanged.bind(this));
+        this._windowClone._sizeChangedId = this.metaWindow.connect('size-changed',
+            this._onMetaWindowSizeChanged.bind(this));
+        this._windowClone._posChangedId = this.metaWindow.connect('position-changed',
+            this._computeBoundingBox.bind(this));
         this._windowClone._destroyId =
             this.realWindow.connect('destroy', () => {
                 // First destroy the clone and then destroy everything
@@ -206,8 +208,7 @@ var WindowClone = new Lang.Class({
 
     addAttachedDialog(win) {
         this._doAddAttachedDialog(win, win.get_compositor_private());
-        this._computeBoundingBox();
-        this.emit('size-changed');
+        this._onMetaWindowSizeChanged();
     },
 
     hasAttachedDialogs() {
@@ -216,15 +217,14 @@ var WindowClone = new Lang.Class({
 
     _doAddAttachedDialog(metaWin, realWin) {
         let clone = new Clutter.Clone({ source: realWin });
-        clone._updateId = metaWin.connect('size-changed', () => {
-            this._computeBoundingBox();
-            this.emit('size-changed');
-        });
+        clone._sizeChangedId = metaWin.connect('size-changed',
+            this._onMetaWindowSizeChanged.bind(this));
+        clone._posChangedId = metaWin.connect('position-changed',
+            this._onMetaWindowSizeChanged.bind(this));
         clone._destroyId = realWin.connect('destroy', () => {
             clone.destroy();
 
-            this._computeBoundingBox();
-            this.emit('size-changed');
+            this._onMetaWindowSizeChanged();
         });
         this.actor.add_child(clone);
     },
@@ -321,12 +321,13 @@ var WindowClone = new Lang.Class({
             else
                 realWindow = child.source;
 
-            realWindow.meta_window.disconnect(child._updateId);
+            realWindow.meta_window.disconnect(child._sizeChangedId);
+            realWindow.meta_window.disconnect(child._posChangedId);
             realWindow.disconnect(child._destroyId);
         });
     },
 
-    _onRealWindowSizeChanged() {
+    _onMetaWindowSizeChanged() {
         this._computeBoundingBox();
         this.emit('size-changed');
     },
@@ -469,7 +470,6 @@ var WindowOverlay = new Lang.Class({
         this._windowAddedId = 0;
 
         button.hide();
-        title.hide();
 
         this.title = title;
         this.closeButton = button;
@@ -544,12 +544,10 @@ var WindowOverlay = new Lang.Class({
         let titleX = cloneX + (cloneWidth - title.width) / 2;
         let titleY = cloneY + cloneHeight - (title.height - this.borderSize) / 2;
 
-        if (animate) {
-            this._animateOverlayActor(title, Math.floor(titleX), Math.floor(titleY), title.width);
-        } else {
-            title.width = title.width;
+        if (animate)
+            this._animateOverlayActor(title, Math.floor(titleX), Math.floor(titleY));
+        else
             title.set_position(Math.floor(titleX), Math.floor(titleY));
-        }
 
         let borderX = cloneX - this.borderSize;
         let borderY = cloneY - this.borderSize;
@@ -568,9 +566,11 @@ var WindowOverlay = new Lang.Class({
     _animateOverlayActor(actor, x, y, width, height) {
         let params = { x: x,
                        y: y,
-                       width: width,
                        time: Overview.ANIMATION_TIME,
                        transition: 'easeOutQuad' };
+
+        if (width !== undefined)
+            params.width = width;
 
         if (height !== undefined)
             params.height = height;
@@ -1506,7 +1506,7 @@ var Workspace = new Lang.Class({
             if (metaWin.is_attached_dialog()) {
                 let parent = metaWin.get_transient_for();
                 while (parent.is_attached_dialog())
-                    parent = metaWin.get_transient_for();
+                    parent = parent.get_transient_for();
 
                 let idx = this._lookupIndex (parent);
                 if (idx < 0) {
