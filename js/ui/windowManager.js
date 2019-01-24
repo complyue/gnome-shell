@@ -627,8 +627,8 @@ var AppSwitchAction = new Lang.Class({
 
         if (this.get_n_current_points() == 3) {
             for (let i = 0; i < this.get_n_current_points(); i++) {
-                [startX, startY] = this.get_press_coords(i);
-                [x, y] = this.get_motion_coords(i);
+                let [startX, startY] = this.get_press_coords(i);
+                let [x, y] = this.get_motion_coords(i);
 
                 if (Math.abs(x - startX) > MOTION_THRESHOLD ||
                     Math.abs(y - startY) > MOTION_THRESHOLD)
@@ -1173,6 +1173,10 @@ var WindowManager = new Lang.Class({
                 yScale = geom.height / actor.height;
             } else {
                 let monitor = Main.layoutManager.monitors[actor.meta_window.get_monitor()];
+                if (!monitor) {
+                    this._minimizeWindowDone();
+                    return;
+                }
                 xDest = monitor.x;
                 yDest = monitor.y;
                 if (Clutter.get_default_text_direction() == Clutter.TextDirection.RTL)
@@ -1248,6 +1252,11 @@ var WindowManager = new Lang.Class({
                                 geom.height / actor.height);
             } else {
                 let monitor = Main.layoutManager.monitors[actor.meta_window.get_monitor()];
+                if (!monitor) {
+                    actor.show();
+                    this._unminimizeWindowDone();
+                    return;
+                }
                 actor.set_position(monitor.x, monitor.y);
                 if (Clutter.get_default_text_direction() == Clutter.TextDirection.RTL)
                     actor.x += monitor.width;

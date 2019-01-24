@@ -203,6 +203,7 @@ var LayoutManager = new Lang.Class({
 
         // Set up stage hierarchy to group all UI actors under one container.
         this.uiGroup = new Shell.GenericContainer({ name: 'uiGroup' });
+        this.uiGroup.set_flags(Clutter.ActorFlags.NO_LAYOUT);
         this.uiGroup.connect('allocate', (actor, box, flags) => {
             let children = actor.get_children();
             for (let i = 0; i < children.length; i++)
@@ -557,6 +558,8 @@ var LayoutManager = new Lang.Class({
     },
 
     get focusMonitor() {
+        if (this.focusIndex < 0)
+            return null;
         return this.monitors[this.focusIndex];
     },
 
