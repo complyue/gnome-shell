@@ -1,4 +1,4 @@
-gnome-shell (3.28.3+git20190124-0ubuntu18.04.1) UNRELEASED; urgency=medium
+gnome-shell (3.28.3+git20190124-0ubuntu18.04.1) bionic; urgency=medium
 
   * New git snapshot release up to commit 24cdcc56d (LP: #1811900)
     - Don't fill journal with osdWindow errors (LP: #1772677)
@@ -27,7 +27,7 @@ gnome-shell (3.28.3+git20190124-0ubuntu18.04.1) UNRELEASED; urgency=medium
   * d/p/debian/patches/volume-Add-back-sound-feedback-on-scroll.patch:
     - Add missing include (LP: #1811908)
 
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Tue, 22 Jan 2019 01:53:57 +0100
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Fri, 25 Jan 2019 18:29:40 +0000
 
 gnome-shell (3.28.3-0ubuntu0.18.04.4) bionic; urgency=medium
 
