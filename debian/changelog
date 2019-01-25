@@ -1,3 +1,9 @@
+gnome-shell (3.30.2-0ubuntu1.18.10.1) UNRELEASED; urgency=medium
+
+  * New upstream release 3.30.2 (LP: #1813350)
+
+ -- Iain Lane <iain.lane@canonical.com>  Fri, 25 Jan 2019 18:47:00 +0000
+
 gnome-shell (3.30.1-2ubuntu1.18.10.2) cosmic; urgency=medium
 
   * debian/gbp.conf: Specify the right packaging branch
