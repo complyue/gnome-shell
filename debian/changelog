@@ -1,15 +1,13 @@
-gnome-shell (3.30.2-2) UNRELEASED; urgency=medium
+gnome-shell (3.30.2-0ubuntu1.18.10.1) UNRELEASED; urgency=medium
 
+  [ Iain Lane ]
+  * New upstream release 3.30.2 (LP: #1813350)
+
+  [ Marco Trevisan (Treviño) ]
   * d/p/power-Label-the-PENDING_CHARGE-state-as-Not-Charging.patch:
     - Label the PENDING_CHARGE state as "Not Charging" (LP: #1745032)
   * d/p/ibusManager-Don-t-pass-undefined-callback-to-ibus.patch:
     - Fix missing icon in keyboard indicator (LP: #1812266)
-
- -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Thu, 24 Jan 2019 23:37:59 +0000
-
-gnome-shell (3.30.2-0ubuntu1.18.10.1) UNRELEASED; urgency=medium
-
-  * New upstream release 3.30.2 (LP: #1813350)
 
  -- Iain Lane <iain.lane@canonical.com>  Fri, 25 Jan 2019 18:47:00 +0000
 
