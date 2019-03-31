@@ -494,14 +494,18 @@ var TouchpadWorkspaceSwitchAction = new Lang.Class({
         if ((allowedModes & Main.actionMode) == 0)
             return;
 
+        // be much less sensitive in showing activities overview than switching workspace
+        if (this._dx < -MOTION_THRESHOLD * 5) { Main.overview.show(); return; }
+        else if (this._dx > MOTION_THRESHOLD * 5) { Main.overview.hide(); return; }
+
         if (this._dy < -MOTION_THRESHOLD)
             dir = Meta.MotionDirection.DOWN;
         else if (this._dy > MOTION_THRESHOLD)
             dir = Meta.MotionDirection.UP;
-        else if (this._dx < -MOTION_THRESHOLD)
-            dir = Meta.MotionDirection.RIGHT;
-        else if (this._dx > MOTION_THRESHOLD)
-            dir = Meta.MotionDirection.LEFT;
+        // else if (this._dx < -MOTION_THRESHOLD)
+        //     dir = Meta.MotionDirection.RIGHT;
+        // else if (this._dx > MOTION_THRESHOLD)
+        //     dir = Meta.MotionDirection.LEFT;
         else
             return;
 
